@@ -1,24 +1,22 @@
 package com.sheefee.simple.sso.server.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.sheefee.simple.sso.client.constant.AuthConst;
 import com.sheefee.simple.sso.client.domain.User;
 import com.sheefee.simple.sso.client.storage.SessionStorage;
 import com.sheefee.simple.sso.client.util.HTTPUtil;
 import com.sheefee.simple.sso.server.service.UserService;
 import com.sheefee.simple.sso.server.storage.ClientStorage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * 登录和注销控制器
@@ -44,7 +42,8 @@ public class LoginController {
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, User input, Model model) {
 		// 验证用户
-		User user = userService.find(input);
+//		User user = userService.find(input);
+		User user = input;
 		if (user == null) {
 			model.addAttribute("error", "username or password is wrong.");
 			return "redirect:/";
